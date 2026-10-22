@@ -63,7 +63,7 @@ uv run python logistic__regression.py
 uv run python classification_tree.py
 uv run python tree_ensemble_models.py
 
-# 3. Statistical tests (needs the predictions saved in step 2)
+# 3. Statistical tests 
 uv run python q1_stat.py
 ```
 
