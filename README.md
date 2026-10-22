@@ -79,7 +79,6 @@ The preprocessing step must run first, because all model scripts read `train.csv
 | `logistic__regression.py` | test metrics, top-5 features per class, `models/lg.joblib`, `models/lr_cv_results.csv`, `data/y_pred_lg.csv` | Model performance table, Q1, Q4 |
 | `classification_tree.py` | test metrics, top-5 features, `models/ct.joblib`, `models/ct_cv_results.csv`, `data/y_pred_ct.csv` | Model performance table, Q2, Q4 |
 | `tree_ensemble_models.py` | Model performance of random forest & gradient bossting, `data/y_pred_rf.csv` | Model performance table, Q2, Q3, Q4 |
-| `gradient_boosting.py` | test metrics, top-5 features, `data/y_pred_gb.csv` | Model performance table, Q2, Q4 |
 | `q1_stat.py` | McNemar 2×2 tables and p-values | Q1 and Q2 statistical tests(replace it with models accordingly) |
 
 The cross-validation results (`models/*_cv_results.csv`) contain the full
