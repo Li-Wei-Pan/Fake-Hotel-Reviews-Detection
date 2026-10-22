@@ -65,7 +65,7 @@ rf_pipeline.fit(X_train, y_train)
 param_grid_rf = {
     'vectorizer__min_df': [1, 2, 5],
     'vectorizer__ngram_range': [(1, 1), (1,2)],
-    'top_k__k': [500, 1000, 2000, 2500],
+    'top_k__k': [500, 1000, 'all'],
 
     'rf__n_estimators': [200, 500, 750],
     'rf__max_depth': [None, 20],
@@ -124,6 +124,10 @@ print('-----')
 print('precision: ', pre_rf)
 print('-----')
 
+# save y_pred_rf for stat test
+y_pred_rf_df = pd.DataFrame(y_pred_rf)
+y_pred_rf_df.to_csv("data/y_pred_rf.csv", index=False)
+
 
 # **GRADIENT BOOSTING CLASSIFIER**
 # 
@@ -152,7 +156,7 @@ gb_pipeline.fit(X_train, y_train)
 param_grid_gb = {
     'vectorizer__min_df': [1, 2, 5],
     'vectorizer__ngram_range': [(1, 1), (1, 2)],
-    'top_k__k': [500, 1000, 2000],
+    'top_k__k': [500, 1000, 'all'],
 
     'gb__n_estimators': [50, 100, 200],
     'gb__learning_rate': [0.05, 0.1],
@@ -206,4 +210,8 @@ print('recall:', recall_gb)
 print('-----')
 print('precision: ', pre_gb)
 print('-----')
+# save y_pred_gb for stat test
+y_pred_gb_df = pd.DataFrame(y_pred_gb)
+y_pred_gb_df.to_csv("data/y_pred_gb.csv", index=False)
+
 
