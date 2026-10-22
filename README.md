@@ -58,14 +58,13 @@ replace `uv run python` with `python`.
 uv run python preprocessing.py
 
 # 2. Models: tune with 5-fold stratified CV, refit on the training set, evaluate on the test set
-uv run python multinomial_nb.py
-uv run python logistic_regression.py
+uv run python mnb.py
+uv run python logistic__regression.py
 uv run python classification_tree.py
-uv run python random_forest.py
-uv run python gradient_boosting.py
+uv run python tree_ensemble_models.py
 
 # 3. Statistical tests (needs the predictions saved in step 2)
-uv run python mcnemar_test.py
+uv run python q1_stat.py
 ```
 
 The preprocessing step must run first, because all model scripts read `train.csv` and
@@ -76,12 +75,12 @@ The preprocessing step must run first, because all model scripts read `train.csv
 | Script | Output | Used in the report |
 |---|---|---|
 | `preprocessing.py` | `train.csv`, `test.csv`, review-length and vocabulary figures | Data and Preprocessing sections, Figures 1–2 |
-| `multinomial_nb.py` | test metrics, top-5 features per class, `models/mnb.joblib`, `models/mnb_cv_results.csv`, `data/y_pred_mnb.csv` | Model performance table, Q1, Q4 |
-| `logistic_regression.py` | test metrics, top-5 features per class, `models/lg.joblib`, `models/lr_cv_results.csv`, `data/y_pred_lg.csv` | Model performance table, Q1, Q4 |
+| `mnb.py` | test metrics, top-5 features per class, `models/mnb.joblib`, `models/mnb_cv_results.csv`, `data/y_pred_mnb.csv` | Model performance table, Q1, Q4 |
+| `logistic__regression.py` | test metrics, top-5 features per class, `models/lg.joblib`, `models/lr_cv_results.csv`, `data/y_pred_lg.csv` | Model performance table, Q1, Q4 |
 | `classification_tree.py` | test metrics, top-5 features, `models/ct.joblib`, `models/ct_cv_results.csv`, `data/y_pred_ct.csv` | Model performance table, Q2, Q4 |
-| `random_forest.py` | test metrics, top-5 features, accuracy on positive vs. negative reviews, `data/y_pred_rf.csv` | Model performance table, Q2, Q3, Q4 |
+| `tree_ensemble_models.py` | Model performance of random forest & gradient bossting, `data/y_pred_rf.csv` | Model performance table, Q2, Q3, Q4 |
 | `gradient_boosting.py` | test metrics, top-5 features, `data/y_pred_gb.csv` | Model performance table, Q2, Q4 |
-| `mcnemar_test.py` | McNemar 2×2 tables and p-values | Q1 and Q2 statistical tests |
+| `q1_stat.py` | McNemar 2×2 tables and p-values | Q1 and Q2 statistical tests(replace it with models accordingly) |
 
 The cross-validation results (`models/*_cv_results.csv`) contain the full
 hyperparameter grids and are reported in the appendix.
@@ -101,12 +100,11 @@ hyperparameter grids and are reported in the appendix.
 │   └── all_data.csv          # input data (not included, see "Data")
 ├── models/                   # saved models and CV results (created by the scripts)
 ├── preprocessing.py
-├── multinomial_nb.py
-├── logistic_regression.py
+├── mnb.py
+├── logistic__regression.py
 ├── classification_tree.py
-├── random_forest.py
-├── gradient_boosting.py
-├── mcnemar_test.py
+├── tree_ensemble_models.py
+├── q1_stat.py
 ├── pyproject.toml
 ├── uv.lock
 ├── requirements.txt
